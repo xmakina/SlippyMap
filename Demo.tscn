@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/SlippyMap.tscn" type="PackedScene" id=1]
+[ext_resource path="res://SlippyMapWrapper.gd" type="Script" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.737255, 0.266667, 0.266667, 1 )
+
+[node name="Demo" type="Node"]
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="SlippyMapWrapper" type="Control" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -320.0
+rect_clip_content = true
+script = ExtResource( 2 )
+
+[node name="SlippyMap" parent="SlippyMapWrapper" instance=ExtResource( 1 )]
+
+[connection signal="mouse_entered" from="SlippyMapWrapper" to="SlippyMapWrapper" method="_on_SlippyMapWrapper_mouse_entered"]
+[connection signal="mouse_exited" from="SlippyMapWrapper" to="SlippyMapWrapper" method="_on_SlippyMapWrapper_mouse_exited"]
